@@ -1,7 +1,5 @@
 ﻿using bpac;
 using System;
-using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Bhack.StickerStation
@@ -34,7 +32,7 @@ namespace Bhack.StickerStation
 
             if (doc.Open(fileName))
             {
-                doc.GetObject("usageModel").Text = (string)cbUsageModel.SelectedItem.ToString();
+                doc.GetObject("usageModel").Text = cbUsageModel.SelectedItem.ToString();
                 doc.GetObject("owner").Text = tbOwner.Text;
                 doc.GetObject("fee").Text = tbFee.Text.Replace(',', '.');
                 doc.GetObject("notes").Text = tbNotes.Text;
@@ -53,16 +51,8 @@ namespace Bhack.StickerStation
         {
             var selectedItem = (UsageModel)cbUsageModel.SelectedItem;
 
-            if (selectedItem.HasFee)
-            {
-                tbFee.Enabled = true;
-                tbFee.Text = "N/A";
-            }
-            else
-            {
-                tbFee.Enabled = false;
-                tbFee.Text = "N/A";
-            }
+            tbFee.Enabled = selectedItem.HasFee;
+            tbFee.Text = "N/A";
         }
     }
 }
