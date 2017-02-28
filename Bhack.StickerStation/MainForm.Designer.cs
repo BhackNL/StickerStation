@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.gbCreateSticker = new System.Windows.Forms.GroupBox();
+            this.rbContents = new System.Windows.Forms.RadioButton();
             this.rbLarge = new System.Windows.Forms.RadioButton();
             this.rbSmall = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,6 +57,7 @@
             // 
             // gbCreateSticker
             // 
+            this.gbCreateSticker.Controls.Add(this.rbContents);
             this.gbCreateSticker.Controls.Add(this.rbLarge);
             this.gbCreateSticker.Controls.Add(this.rbSmall);
             this.gbCreateSticker.Controls.Add(this.label2);
@@ -72,10 +74,21 @@
             this.gbCreateSticker.Margin = new System.Windows.Forms.Padding(2);
             this.gbCreateSticker.Name = "gbCreateSticker";
             this.gbCreateSticker.Padding = new System.Windows.Forms.Padding(2);
-            this.gbCreateSticker.Size = new System.Drawing.Size(369, 135);
+            this.gbCreateSticker.Size = new System.Drawing.Size(379, 135);
             this.gbCreateSticker.TabIndex = 1;
             this.gbCreateSticker.TabStop = false;
             this.gbCreateSticker.Text = "Create a sticker";
+            // 
+            // rbContents
+            // 
+            this.rbContents.AutoSize = true;
+            this.rbContents.Location = new System.Drawing.Point(309, 23);
+            this.rbContents.Margin = new System.Windows.Forms.Padding(2);
+            this.rbContents.Name = "rbContents";
+            this.rbContents.Size = new System.Drawing.Size(67, 17);
+            this.rbContents.TabIndex = 12;
+            this.rbContents.Text = "Contents";
+            this.rbContents.UseVisualStyleBackColor = true;
             // 
             // rbLarge
             // 
@@ -122,7 +135,7 @@
             // lbNotes
             // 
             this.lbNotes.AutoSize = true;
-            this.lbNotes.Location = new System.Drawing.Point(39, 109);
+            this.lbNotes.Location = new System.Drawing.Point(13, 110);
             this.lbNotes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbNotes.Name = "lbNotes";
             this.lbNotes.Size = new System.Drawing.Size(38, 13);
@@ -193,7 +206,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 153);
+            this.ClientSize = new System.Drawing.Size(396, 153);
             this.Controls.Add(this.gbCreateSticker);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
@@ -221,6 +234,7 @@
         private System.Windows.Forms.RadioButton rbLarge;
         private System.Windows.Forms.RadioButton rbSmall;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton rbContents;
     }
 }
 

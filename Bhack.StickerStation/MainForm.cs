@@ -28,17 +28,26 @@ namespace Bhack.StickerStation
             var type = Type.GetTypeFromProgID("bpac.Document");
             var doc = (Document)Activator.CreateInstance(type);
 
-            var fileName = rbLarge.Checked ? "BhackL.lbx" : "BhackS.lbx";
+            var fileName = rbLarge.Checked ? "BhackL.lbx" : rbContents.Checked ? "BhackM.lbx" : "BhackS.lbx";
 
             if (doc.Open(fileName))
             {
-                doc.GetObject("usageModel").Text = cbUsageModel.SelectedItem.ToString();
-                doc.GetObject("owner").Text = tbOwner.Text;
-                doc.GetObject("fee").Text = tbFee.Text.Replace(',', '.');
-                doc.GetObject("notes").Text = tbNotes.Text;
-                doc.GetObject("qrCode").Text = doc.GetObject("qrCode").Text + Guid.NewGuid();
-
-                //doc.SaveAs(ExportType.bexLbx, "test.lbx");
+                if (!rbContents.Checked)
+                {
+                    doc.GetObject("usageModel").Text = cbUsageModel.SelectedItem.ToString();
+                    doc.GetObject("owner").Text = tbOwner.Text;
+                    doc.GetObject("fee").Text = tbFee.Text.Replace(',', '.');
+                    doc.GetObject("notes").Text = tbNotes.Text;
+                    doc.GetObject("qrCode").Text = doc.GetObject("qrCode").Text + Guid.NewGuid();
+                }
+                else
+                {
+                    doc.GetObject("usageModel").Text = cbUsageModel.SelectedItem.ToString();
+                    doc.GetObject("owner").Text = tbOwner.Text;
+                    doc.GetObject("fee").Text = tbFee.Text.Replace(',', '.');
+                    doc.GetObject("contents").Text = tbNotes.Text;
+                    doc.GetObject("qrCode").Text = doc.GetObject("qrCode").Text + Guid.NewGuid();
+                }
 
                 doc.StartPrint("", PrintOptionConstants.bpoDefault);
                 doc.PrintOut(1, PrintOptionConstants.bpoDefault);
@@ -49,6 +58,8 @@ namespace Bhack.StickerStation
 
         private void OnUsageModelChanged(object sender, EventArgs e)
         {
+            lbNotes.Text = rbContents.Checked ? "Contents" : "Notes";
+
             var selectedItem = (UsageModel)cbUsageModel.SelectedItem;
 
             tbFee.Enabled = selectedItem.HasFee;

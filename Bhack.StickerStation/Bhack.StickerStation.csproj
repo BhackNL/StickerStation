@@ -108,6 +108,9 @@
     <None Include="BhackL.lbx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="BhackM.lbx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="BhackS.lbx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
